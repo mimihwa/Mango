@@ -8,9 +8,9 @@ const ProductPage = (props) => {
     const navigate = useNavigate();
     const [product, setProuct] =useState(null);
     useEffect(()=>{
-        axios.get(`https://ef2d1220-16cb-4c24-9c59-dec8477c92e0.mock.pstmn.io/products/${id}`)
+        axios.get(`http://localhost:8080/products/${id}`)
         .then((result)=>{
-            setProuct(result.data)
+            setProuct(result.data.product)
         }).catch((error)=>{
             console.log(`통신실패: ${error}`);
         })

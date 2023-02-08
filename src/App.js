@@ -1,14 +1,15 @@
 import './App.css';
 import React from "react";
 import MainPage from "./components/MainPage";
-import {Routes, Route, Link} from 'react-router-dom'
+import {Routes, Route, Link, useNavigate, Navigate} from 'react-router-dom'
 import ProductPage from "./components/ProductPage"
 import UploadPage from "./components/UploadPage"
+import {Button} from "antd";
+import { DownloadOutlined } from '@ant-design/icons';
 
 
-const App=()=> {
-    
-/* https://ef2d1220-16cb-4c24-9c59-dec8477c92e0.mock.pstmn.io */
+const App=() => {
+    let navigate = useNavigate();
    
     return(
       <div className='App'>
@@ -17,6 +18,7 @@ const App=()=> {
                 <Link to="/">
                     <img src="./images/icons/logo.png" alt="logo" />
                 </Link>
+                <Button size='large' icon={<DownloadOutlined />} onClick={()=>{navigate('/UploadPage')}}>상품 업로드</Button>
             </div>
         </div>
         <div id="body">

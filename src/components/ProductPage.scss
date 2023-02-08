@@ -1,5 +1,13 @@
-#back-btn{display: flex; margin: 20px auto; padding: 10px 20px; background: peachpuff;}
+#back-btn{
+    display: flex; 
+    margin: 20px auto; 
+    padding: 10px 20px; 
+    background: peachpuff;
+    border: none;
+    outline: none;
+}
 #image-box{
+    text-align: center;
     height: 300px;
     img{height: 100%;}
 }

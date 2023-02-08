@@ -2,14 +2,18 @@ import React, { useState, useEffect} from 'react';
 import './MainPage.css'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
+
 
 const MainPage = () => {
     let [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get(' https://ef2d1220-16cb-4c24-9c59-dec8477c92e0.mock.pstmn.io/products')
+        axios.get('http://localhost:8080/products/')
         .then((result) => {
-            products = result.data.products;
+            products = result.data.product;
             setProducts(products);
         }).catch((error) => {
             console.log(`통신실패 : ${error}`)
@@ -34,10 +38,14 @@ const MainPage = () => {
                             <div className="product-contents">
                                 <span className="product-name">{product.name}</span>
                                 <span className="product-price">{product.price}</span>
-                                <span className="product-seller">
-                                    <img src="./images/icons/avatar.png" alt="" className="product-avatar" />
-                                    <span>{product.seller}</span>
-                                </span>
+                                <div className='product-footer'>
+                                    <span className="product-seller">
+                                        <img src="./images/icons/avatar.png" alt="" className="product-avatar" />
+                                        <span>{product.seller}</span>
+                                    </span>
+                                    <span className="product-date">{dayjs(product.createdAt).fromNow()}</span>
+                                </div>
+                                
                             </div>
                         </Link>
                     </div>
